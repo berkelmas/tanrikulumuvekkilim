@@ -1,0 +1,179 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'muvekkil/img/favicon.png' %}" type="image/png">
+        <title>Müvekkilim</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'muvekkil/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/css/font-awesome.min.css' %} ">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/nice-select/css/nice-select.css'%} ">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/flaticon/flaticon.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'muvekkil/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/css/responsive.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/css/mdb.css' %}">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+    </head>
+    <body>
+
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+            <div class="main_menu">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container box_1620">
+						<!-- Brand and toggle get grouped for better mobile display -->
+
+						<a style="color : white" class="navbar-brand logo_h" href="/">Tanrıkulu Hukuk</a>
+
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+
+                            <ul class="navbar-nav menu_nav justify-content-end">
+                        <li class="nav-item"><a style="color : white" class="nav-link" href="/logout/">Çıkış Yap</a></li>
+                            </ul>
+
+
+
+						</div>
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+
+        <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+            <div class="banner_inner">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5">
+							<div class="banner_content">
+								<h2 class="text-center">{{ dava.dava_title }} <br /></h2>
+								<p class="text-center">{{ dava.dava_description }}</p>
+
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="home_left_img">
+								<img class="img-fluid" src="{% static 'muvekkil/img/banner/bannerlacivert.png' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+
+        <!--================Work Area =================-->
+        <section class="work_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Dosya Detayları</h2>
+                    <p>Dosyanızın taranmış halini indirmek için <a href="{{ dava.dava_link }}">buraya </a> tıklayın.</p>
+
+                </div>
+            <h6 class="mb-20 title_color"><strong>Dosya Esas No:</strong> <small>{{ dava.dava_esasno }}</small></h6>
+            <h6 class="mb-20 title_color"><strong>Davadaki Konumumuz:</strong> <small>{{ dava.dava_sifat }}</small></h6>
+            <h6 class="mb-20 title_color"><strong>Dosyanın Bulunduğu Mahkeme:</strong> <small>{{ dava.dava_mahkemeonad }} {{ dava.dava_mahkeme }}</small></h6>
+            <h6 class="mb-20 title_color"><strong>Davanın Karşı Tarafları:</strong> <small>{{ dava.davakarsitaraf.all|join:" " }}</small></h6>
+
+                <hr>
+                    <h3 class="mb-20 title_color">Dosya Üzerinde Yapılan İşlem Geçmişi {{ id }}</h3>
+                    <div class="section-top-border">
+
+
+						<div class="progress-table-wrap">
+							<div class="progress-table">
+								<div class="table-head">
+									<div class="serial">Tarih</div>
+									<div class="country">İşlem Adı</div>
+									<div class="visit">İşlem Açıklaması</div>
+
+								</div>
+                                {% for surec in surecler %}
+								<div class="table-row">
+									<div class="serial">{{ surec.surec_date }}</div>
+                                    <div class="country">{{ surec.surec_title }}</div>
+									<div class="visit">{{ surec.surec_description }}</div>
+
+								</div>
+
+                                {% endfor %}
+
+							</div>
+						</div>
+					</div>
+
+
+        		</div>
+        	</div>
+        </section>
+        <!--================End Work Area =================-->
+
+
+        <!--================Footer Area =================-->
+        <footer class="footer_area p_120">
+        	<div class="container">
+        		<div class="row footer_inner">
+        			<div class="col-lg-4 col-sm-6">
+
+        			</div>
+        			<div class="col-lg-5 col-sm-6">
+        				<aside class="f_widget ab_widget">
+        					<div class="f_title">
+        						<h3 class="text-center">Müvekkilim Uygulaması</h3>
+        					</div>
+        					<p class="text-center">Müvekkilim uygulaması sayesinde; dava dosyalarınız hakkında detaylı bilgi edinebilir; dava dosyalarınıza ulaşabilirsiniz.</p>
+
+        				</aside>
+        			</div>
+
+        		</div>
+        	</div>
+        </footer>
+        <!--================End Footer Area =================-->
+
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'muvekkil/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/popper.js' %}"></script>
+        <script src="{% static 'muvekkil/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/stellar.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/isotope/isotope-min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/counter-up/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/mail-script.js' %}"></script>
+        <!--gmaps Js-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="{% static 'muvekkil/js/gmaps.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/theme.js' %}"></script>
+    </body>
+</html>

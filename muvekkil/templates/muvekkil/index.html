@@ -1,0 +1,347 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{% static 'muvekkil/img/favicon.png' %}" type="image/png">
+        <title>Müvekkilim</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="{% static 'muvekkil/css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/linericon/style.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/css/font-awesome.min.css' %} ">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/owl-carousel/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/lightbox/simpleLightbox.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/nice-select/css/nice-select.css'%} ">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/animate-css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/vendors/flaticon/flaticon.css' %}">
+        <!-- main css -->
+        <link rel="stylesheet" href="{% static 'muvekkil/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/css/responsive.css' %}">
+        <link rel="stylesheet" href="{% static 'muvekkil/css/mdb.css' %}">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+        <style>
+
+            @media screen and (max-width: 480px) {
+                #deneme {
+                    background-color : #3bacf0;
+                }
+            }
+
+        </style>
+
+
+
+    </head>
+    <body>
+        
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+            <div class="main_menu">
+            	<nav id="deneme" class="navbar navbar-expand-lg navbar-light">
+					<div class="container box_1620">
+						<!-- Brand and toggle get grouped for better mobile display -->
+
+						<a style="color : white" class="navbar-brand logo_h" href="/">Tanrıkulu Hukuk</a>
+
+						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+
+                            <ul class="navbar-nav menu_nav justify-content-end">
+                        <li class="nav-item"><a style="color : white" class="nav-link" href="/logout/">Çıkış Yap</a></li>
+                            </ul>
+
+
+						</div>
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+
+        <!--================Home Banner Area =================-->
+        <section class="home_banner_area">
+            <div class="banner_inner">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-5">
+							<div>
+								<h1 style="color : white" class="text-center">Tanrıkulu Hukuk'tan Haberleri Al <br /></h1>
+								<h3 style="color : white" class="text-center"><small>Tanrıkulu Hukuk Müvekkilim™ Sayesinde; davam ne oldu; avukatım bugün ne yaptıya ulaşmak çok kolay...</small></h3>
+
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="home_left_img">
+								<img class="img-fluid" src="{% static 'muvekkil/img/banner/bannerlacivert.png' %}" alt="">
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+        
+        <!--================Work Area =================-->
+        <section class="work_area p_120">
+        	<div class="container">
+        		<div class="main_title">
+        			<h2>Dava Dosyalarım</h2>
+        			<p>Aşağıda güncel dava dosyalarınızı görebilir ve bunlara tıklayarak son gelişmeleri takip edebilirsiniz.</p>
+        		</div>
+        		<div class="work_inner row">
+
+                    {% for dava in davalar %}
+
+        			<div class="col-lg-4">
+        				<div class="work_item">
+                            <a href="/davadetay/{{ dava.id }}"><i class="lnr lnr-pushpin"></i></a>
+        					<a href="/davadetay/{{ dava.id }}"><h4>{{ dava.dava_title }}</h4></a>
+                            <strong>{{ dava.dava_esasno }}</strong>
+        					<p>{{ dava.dava_description }}</p>
+        				</div>
+        			</div>
+
+                    {% endfor %}
+
+        		</div>
+        	</div>
+        </section>
+        <!--================End Work Area =================-->
+
+                <!--================Made Life Area =================-->
+        <section class="made_life_area p_120">
+        	<div class="d-flex justify-content-center"><h2 style="color: black;">Avukata Dosya Gönder</h2></div>
+            <div class="container">
+
+        		<div class="made_life_inner">
+
+					<div class="row made_life_text d-flex justify-content-center">
+						<div class="col-lg-6">
+							<div class="left_side_text">
+                                <br>
+								<h6 class="text-center">Av. Ruhsar Tanrıkulu'na İstenilen Evrakları Buradan Gönderebilirsiniz.</h6>
+								<a style="color : white;" class="main_btn d-flex justify-content-center" data-toggle="modal" data-target="#modalLoginForm">Dosya Gönder</a>
+							</div>
+						</div>
+					</div>
+        		</div>
+        	</div>
+        </section>
+        <!--================End Made Life Area =================-->
+
+        
+
+        <!--================Footer Area =================-->
+        <footer class="footer_area p_120">
+        	<div class="container">
+        		<div class="row footer_inner">
+        			<div class="col-lg-4 col-sm-6">
+
+        			</div>
+        			<div class="col-lg-5 col-sm-6">
+        				<aside class="f_widget ab_widget">
+        					<div class="f_title">
+        						<h3 class="text-center">Tanrıkulu Hukuk Müvekkilim Uygulaması</h3>
+        					</div>
+        					<p class="text-center">Müvekkilim uygulaması sayesinde; dava dosyalarınız hakkında detaylı bilgi edinebilir; dava dosyalarınıza ulaşabilirsiniz.</p>
+
+        				</aside>
+        			</div>
+
+        		</div>
+        	</div>
+        </footer>
+        <!--================End Footer Area =================-->
+
+
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Dosya Gönder</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    <form id="formdenemesi" method="POST">
+
+        {% csrf_token %}
+
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input name="dosyaadi" type="text" id="defaultForm-email" placeholder="Dosya Adı" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-5">
+          <input name="dosyaaciklamasi" type="text" id="defaultForm-email" placeholder="Dosya Açıklaması" class="form-control validate">
+        </div>
+
+
+      <div class="d-flex justify-content-center flex-column">
+        <select name="dosyadavasi" class="browser-default custom-select">
+          <option selected>İlgili Dava</option>
+            {% for dava in davalar %}
+              <option value="{{ dava.id }}">{{ dava.dava_title }} -- {{ dava.dava_esasno }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+        <div class="input-default-wrapper mt-5">
+
+          <span class="input-group-text mb-3" id="input2">Yükle</span>
+
+          <input name="myfile" type="file" id="file-with-multi-file" class="input-default-js" data-multiple-target="{target} dosya seçili"
+            multiple>
+
+          <label class="label-for-default-js rounded-right mb-3" for="file-with-multi-file"><span class="span-choose-file">Dosya/Dosyalar Seç</span>
+
+            <div class="float-right span-browse">Gözat</div>
+
+          </label>
+
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button id="dosyagonder" type="submit" class="btn btn-primary">Gönder</button>
+      </div>
+
+     </form>
+
+    </div>
+  </div>
+</div>
+
+        
+
+        <script src="{% static 'muvekkil/js/sweetalert2.js' %}"></script>
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="{% static 'muvekkil/js/jquery-3.2.1.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/popper.js' %}"></script>
+        <script src="{% static 'muvekkil/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/stellar.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/lightbox/simpleLightbox.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/nice-select/js/jquery.nice-select.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/isotope/imagesloaded.pkgd.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/isotope/isotope-min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/counter-up/jquery.waypoints.min.js' %}"></script>
+        <script src="{% static 'muvekkil/vendors/counter-up/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/mail-script.js' %}"></script>
+
+        <!--gmaps Js-->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+        <script src="{% static 'muvekkil/js/gmaps.min.js' %}"></script>
+        <script src="{% static 'muvekkil/js/theme.js' %}"></script>
+
+        <script src="{% static 'muvekkil/js/mdb.js' %}"></script>
+
+
+        <script>
+
+
+            $( document ).ready(function() {
+
+
+
+                var getUrlParameter = function getUrlParameter(sParam) {
+                    var sPageURL = window.location.search.substring(1),
+                        sURLVariables = sPageURL.split('&'),
+                        sParameterName,
+                        i;
+
+                    for (i = 0; i < sURLVariables.length; i++) {
+                        sParameterName = sURLVariables[i].split('=');
+
+                        if (sParameterName[0] === sParam) {
+                            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                        }
+                    }
+                };
+
+
+                var giris = getUrlParameter('giris');
+
+                if (giris === 'olumlu') {
+                const Toast = Swal.mixin({
+                  toast: true,
+                  position: 'bottom-end',
+                  showConfirmButton: false,
+                  timer: 3000
+                });
+
+                Toast.fire({
+                  type: 'success',
+                  title: 'Başarı ile müvekkil girişi yapıldı.'
+                });
+                }
+
+
+                $('#formdenemesi').submit(function (event) {
+                    event.preventDefault();
+
+                    var $this = $(this);
+                    var type = $this.attr('method');
+
+                    var form = document.getElementById('formdenemesi');
+                    var formData = new FormData(form);
+
+                    $.ajax({
+                        url : '',
+                        type : type,
+                        data : formData,
+                        processData: false,
+                        contentType: false,
+                        success : function (data) {
+                            $('.modal').modal('toggle');
+
+                            $(':input').val('');
+
+                            Swal.fire(
+                              'Tebrikler!',
+                              'Dosya başarı ile Av. F. Ruhsar Tanrıkuluna İletildi.!',
+                              'success'
+                            );
+
+                        }
+                    })
+
+
+
+                })
+            });
+
+
+
+
+
+        </script>
+
+
+
+
+
+
+
+
+    </body>
+</html>

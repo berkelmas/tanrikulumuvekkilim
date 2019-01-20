@@ -1,0 +1,179 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Tanrıkulu Hukuk Müvekkil Takip</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'muvekkilgiris/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'muvekkilgiris/css/main.css' %}">
+<!--===============================================================================================-->
+</head>
+<body style="background-color: #666666;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<form method="POST" class="login100-form validate-form">
+
+					<span class="login100-form-title">
+                        <img width="300" src="{% static 'muvekkilgiris/images/siyahlogo2.png' %}" alt="">
+                        <br>
+                        <br>
+						Tanrıkulu Hukuk <br>Müvekkil Girişi
+					</span>
+                    <br>
+
+                    {% if messages %}
+
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <div {% if message.tags %} class="alert {{ message.tags }}"{% endif %}>{{ message }}</div>
+                            {% endfor %}
+                        </ul>
+
+                    {% endif %}
+                    {% csrf_token %}
+
+					<div class="wrap-input100 validate-input" data-validate = "Lütfen Geçerli Bir Email Girin: ex@abc.xyz">
+						<input class="input100" type="text" name="email">
+						<span class="focus-input100"></span>
+						<span class="label-input100">E-mail</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate="Şifre Gereklidir">
+						<input class="input100" type="password" name="pass">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Şifre</span>
+					</div>
+
+                    <br>
+					<div class="container-login100-form-btn">
+						<button style="background-color: #3bacf0" type="submit" class="login100-form-btn">
+							Giriş Yap
+						</button>
+					</div>
+
+					<div class="text-center p-t-12">
+
+					</div>
+
+					<div class="text-center p-t-136">
+
+					</div>
+				</form>
+
+				<div class="login100-more" style="background-image: url('{% static 'muvekkilgiris/images/loginresim.jpeg' %}');">
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+
+
+<!--===============================================================================================-->
+	<script src="{% static 'muvekkilgiris/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'muvekkilgiris/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'muvekkilgiris/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'muvekkilgiris/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'muvekkilgiris/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'muvekkilgiris/vendor/daterangepicker/moment.min.js' %}"></script>
+	<script src="{% static 'muvekkilgiris/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'muvekkilgiris/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'muvekkilgiris/js/main.js' %}"></script>
+
+    <script src="{% static 'muvekkilgiris/js/sweetalert2.js' %}"></script>
+
+    <script>
+
+        $( document ).ready(function() {
+
+                var getUrlParameter = function getUrlParameter(sParam) {
+                    var sPageURL = window.location.search.substring(1),
+                        sURLVariables = sPageURL.split('&'),
+                        sParameterName,
+                        i;
+
+                    for (i = 0; i < sURLVariables.length; i++) {
+                        sParameterName = sURLVariables[i].split('=');
+
+                        if (sParameterName[0] === sParam) {
+                            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+                        }
+                    }
+                };
+
+
+                var giris = getUrlParameter('giris');
+
+                if (giris === 'olumsuz') {
+                    Swal.fire({
+                      title: 'Hata!',
+                      text: 'Email veya şifre geçersiz.',
+                      type: 'error',
+                      confirmButtonText: 'Tekrar Dene'
+                    })
+                } else if (giris === 'basarilicikis') {
+
+                        let timerInterval
+                        Swal.fire({
+                          title: 'Başarılı Çıkış!',
+                          html: 'Başarı ile çıkış yaptınız',
+                          timer: 2000,
+
+                          onClose: () => {
+                            clearInterval(timerInterval)
+                          }
+                        }).then((result) => {
+                          if (
+                            // Read more about handling dismissals
+                            result.dismiss === Swal.DismissReason.timer
+                          ) {
+                            console.log('Zamanlayıcı tarafından kapatıldım.')
+                          }
+                        })
+
+                }
+
+
+        });
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>
